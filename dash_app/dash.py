@@ -4,8 +4,8 @@ import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 from dash.dependencies import Output, Input
 
-from recyclingdata import RecyclingData
-from recyclingchart import RecyclingChart, RecyclingBarChart
+from dash_app.recyclingdata import RecyclingData
+from dash_app.recyclingchart import RecyclingChart, RecyclingBarChart
 
 # Prepare the data
 data = RecyclingData()
@@ -20,10 +20,10 @@ fig2 = rcb.create_chart('2018/19')
 
 
 # Create a Dash app
-def init_dashboard(server):
+def init_dashboard(flask_app):
     """Create a Plotly Dash dashboard."""
-    dash_app = dash.Dash(server=server,
-                         routes_pathname_prefix="/dashapp/",
+    dash_app = dash.Dash(server=flask_app,
+                         routes_pathname_prefix="/dash_app/",
                          external_stylesheets=[dbc.themes.LITERA],
                          )
 

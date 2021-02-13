@@ -26,4 +26,10 @@ def create_app(config_classname):
         from dash_app.dash import init_dashboard
         app = init_dashboard(app)
 
+    from my_app.main.routes import main_bp
+    app.register_blueprint(main_bp)
+
+    from my_app.community.routes import community_bp
+    app.register_blueprint(community_bp)
+
     return app
